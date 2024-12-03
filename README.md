@@ -2,8 +2,6 @@
 
 A sleek and modern implementation of the classic Tic Tac Toe game built with React and styled with Tailwind CSS.
 
-![Game Preview](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/preview.png)
-
 ## ✨ Features
 
 - 🎮 Clean, modern user interface with smooth animations
@@ -105,7 +103,7 @@ Contributions are welcome! Feel free to:
 
 ## 📝 License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is open source and available under the MIT License.
 
 ## 🙏 Acknowledgments
 
