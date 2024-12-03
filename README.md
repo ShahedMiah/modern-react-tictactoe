@@ -2,6 +2,17 @@
 
 A sleek and modern implementation of the classic Tic Tac Toe game built with React and styled with Tailwind CSS.
 
+<div align="center">
+
+![Game Demo](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/docs/images/game-demo.gif)
+
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](docs/CONTRIBUTING.md)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+[View Demo](https://modern-react-tictactoe.vercel.app) | [Report Bug](https://github.com/ShahedMiah/modern-react-tictactoe/issues) | [Request Feature](https://github.com/ShahedMiah/modern-react-tictactoe/issues)
+
+</div>
+
 ## ✨ Features
 
 - 🎮 Clean, modern user interface with smooth animations
@@ -12,6 +23,24 @@ A sleek and modern implementation of the classic Tic Tac Toe game built with Rea
 - 📱 Fully responsive design for all screen sizes
 - 🎲 Player turn indicator
 - 🎵 Modern icons using Lucide React
+
+## 📸 Screenshots
+
+<div align="center">
+
+### Game Start
+![Game Start](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/docs/images/game-start.png)
+
+### Gameplay
+![Gameplay](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/docs/images/gameplay.png)
+
+### Game Won
+![Game Won](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/docs/images/game-won.png)
+
+### Mobile View
+![Mobile View](https://raw.githubusercontent.com/ShahedMiah/modern-react-tictactoe/main/docs/images/mobile-view.png)
+
+</div>
 
 ## 🚀 Getting Started
 
@@ -44,66 +73,135 @@ yarn start
 
 4. Open [http://localhost:3000](http://localhost:3000) to play the game!
 
-## 🎮 How to Play
+## 📚 Technical Documentation
 
-1. The game is played on a 3x3 grid
-2. Players take turns placing their marks (X or O) in empty squares
-3. The first player to get 3 of their marks in a row (horizontally, vertically, or diagonally) wins
-4. When all squares are filled and no player has won, the game is a draw
-5. Use the "New Game" button to start a fresh game
-6. Use the "Reset Scores" button to clear both players' scores
+### Component Structure
 
-## 🛠️ Built With
-
-- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
-- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
-- [Lucide React](https://lucide.dev/) - Beautiful & consistent icons
-
-## 📁 Project Structure
-
-```
-modern-react-tictactoe/
-├── public/
-│   └── index.html
-├── src/
-│   ├── TicTacToe.js    # Main game component
-│   ├── index.js        # React entry point
-│   └── index.css       # Global styles and Tailwind imports
-├── package.json
-├── tailwind.config.js
-└── postcss.config.js
+```jsx
+TicTacToe/
+├── GameBoard/       # Main game grid
+├── ScoreBoard/      # Player scores display
+├── GameControls/    # Reset and New Game buttons
+└── GameStatus/      # Current player and winner display
 ```
 
-## 🎯 Key Features Explained
+### State Management
 
-### Score Tracking
-- Keeps track of wins for both X and O players
-- Scores persist until manually reset
-- Visual score display with player-specific colors
+```javascript
+// Game state
+const [board, setBoard] = useState(Array(9).fill(null));
+const [isXNext, setIsXNext] = useState(true);
+const [scores, setScores] = useState({ X: 0, O: 0 });
+const [gameOver, setGameOver] = useState(false);
+const [winLine, setWinLine] = useState(null);
+```
 
-### Win Detection
-- Automatically detects winning combinations
-- Highlights the winning line
-- Prevents further moves after game end
+### Key Functions
 
-### Responsive Design
-- Adapts to different screen sizes
-- Maintains playability on mobile devices
-- Consistent experience across devices
+```javascript
+// Check for winner
+checkWinner(squares) => 'X' | 'O' | null
+
+// Handle square click
+handleClick(index) => void
+
+// Reset game state
+resetGame() => void
+
+// Reset scores
+resetScores() => void
+```
+
+## 🛠 Development
+
+### Running Tests
+
+```bash
+npm test
+# or
+yarn test
+```
+
+### Building for Production
+
+```bash
+npm run build
+# or
+yarn build
+```
+
+### Code Style
+
+This project uses:
+- ESLint for code linting
+- Prettier for code formatting
+- Husky for pre-commit hooks
+
+## 📌 Roadmap
+
+### Version 1.1 (Coming Soon)
+- [ ] Add sound effects
+- [ ] Add animation when placing X/O
+- [ ] Add player names input
+- [ ] Add game history
+
+### Version 1.2
+- [ ] Add AI opponent
+- [ ] Add difficulty levels
+- [ ] Add undo/redo moves
+- [ ] Add local storage for game state
+
+### Version 2.0
+- [ ] Add multiplayer support
+- [ ] Add user accounts
+- [ ] Add leaderboard
+- [ ] Add custom themes
+
+## ⚙️ Troubleshooting
+
+### Common Issues
+
+1. **Module not found errors**
+   ```bash
+   npm clean-install
+   # or
+   yarn clean
+   ```
+
+2. **Tailwind classes not working**
+   - Check if Tailwind is properly configured
+   - Rebuild the CSS with: `npm run build:css`
+
+3. **React development server issues**
+   - Clear cache: `npm start -- --reset-cache`
+   - Check port conflicts: `lsof -i :3000`
+
+4. **Build errors**
+   ```bash
+   rm -rf node_modules
+   rm package-lock.json
+   npm install
+   ```
+
+### Performance Optimization
+
+- Use React.memo for pure components
+- Implement lazy loading for future features
+- Optimize state updates using useCallback
+- Use Web Workers for AI calculations (future)
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to:
+Contributions are welcome! Please check our [Contributing Guide](docs/CONTRIBUTING.md).
 
 1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+2. Create your feature branch
+3. Make your changes
+4. Submit a pull request
 
 ## 📝 License
 
-This project is open source and available under the MIT License.
+This project is open source and available under the [MIT License](LICENSE).
 
 ## 🙏 Acknowledgments
 
@@ -111,6 +209,16 @@ This project is open source and available under the MIT License.
 - Icons provided by Lucide React
 - Styling enhanced by Tailwind CSS
 
-## 📧 Contact
+## 💬 Support
 
-If you have any questions or suggestions, feel free to open an issue in the repository.
+- Create an [Issue](https://github.com/ShahedMiah/modern-react-tictactoe/issues)
+- Join our [Discord Community](https://discord.gg/your-server)
+- Email: your-email@example.com
+
+---
+
+<div align="center">
+
+Made with ❤️ by [Your Name](https://github.com/ShahedMiah)
+
+</div>
